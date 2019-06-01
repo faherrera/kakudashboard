@@ -3,7 +3,7 @@ import { Card, Image } from 'semantic-ui-react';
 import './styles.scss';
 import ButtonExampleAnimated from '../AnimatedButton';
 
-const DetailCard = ({ id, imageCode, name, price, text }) => (
+const DetailCard = ({ id, imageUrl, name, price, text }) => (
   <Card
     centered
     fluid
@@ -11,7 +11,7 @@ const DetailCard = ({ id, imageCode, name, price, text }) => (
     id={id}
     className="DetailCard"
   >
-    <Image src={imageCode} wrapped ui={false} />
+    <Image src={imageUrl} wrapped ui={false} />
     <Card.Content>
       <Card.Header>{name}</Card.Header>
       <Card.Meta>

@@ -1,4 +1,9 @@
 .item-card {
-  margin-bottom: 1rem;
-  display: block;
+  margin-bottom: 1rem !important;
+
+  img {
+    height: 200px !important;
+    object-fit: contain;
+    background: white;
+  }
 }
