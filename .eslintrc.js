@@ -44,5 +44,6 @@ module.exports = {
         "class-methods-use-this": 0,
         "no-useless-escape": 0,
         "linebreak-style": 0,
+        "jsx-quotes": "prefer-single",
     }
 };

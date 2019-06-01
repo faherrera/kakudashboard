@@ -1,0 +1,11 @@
+.DetailCard{
+  img{
+    max-height: 600px;
+    object-fit: cover;
+  }
+}
+
+.detail-card__extra{
+  display: flex;
+  justify-content: flex-end;
+}

@@ -1,12 +1,13 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import SegmentExamplePlaceholder from '../layout/General';
+import ProductListPage from '../pages/products/productlist.page';
+import DetailProductPage from '../pages/products/detail.page';
 
 const Routes = () => (
   <Switch>
-    <Route exact path="/home" component={() => <main><SegmentExamplePlaceholder /></main>} />
-    <Route exact path="/detail" component={() => <main><p> Detail </p></main>} />
-    <Redirect from="/" to="/home" />
+    <Route exact path="/home" component={ProductListPage} />
+    <Route exact path="/product/:id" component={DetailProductPage} />
+    <Redirect exact from="/" to="/home" />
   </Switch>
 );
 

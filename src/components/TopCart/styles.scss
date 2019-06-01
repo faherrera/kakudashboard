@@ -1,0 +1,28 @@
+.top-cart{
+  z-index: 1000;
+  box-shadow: none !important;
+
+  &__content {
+    background: white;
+    padding: 1rem;
+    position: absolute;
+    z-index: 1000;
+    border: 1px solid rgba(grey, 0.3);
+    border-top: none;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+  }
+
+}
+
+.cart-counter {
+  float: right;
+  cursor: pointer;
+  padding: 0 1rem;
+
+  &:hover {
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    border-radius: 5px;
+  }
+
+}

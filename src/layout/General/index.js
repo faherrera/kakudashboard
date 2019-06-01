@@ -1,19 +1,16 @@
+/* eslint "jsx-quotes": ["error", "prefer-double"] */
 import React from 'react';
 import HeaderNav from '../../components/Header';
+import SearchBar from '../../components/SearchBar';
 
-const SegmentExamplePlaceholder = () => (
+const GeneralLayout = ({ children }) => (
   <div className="general-wrapper">
     <HeaderNav />
+    <SearchBar />
     <main>
-      <div className="container">
-        <p>
-          suscipi eligendi perferendis!
-          Quia, laboriosam? Numquam voluptates veritatis atque! Earum sequi alias distinctio.
-        </p>
-      </div>
-
+      {children}
     </main>
   </div>
 );
 
-export default SegmentExamplePlaceholder;
+export default GeneralLayout;
