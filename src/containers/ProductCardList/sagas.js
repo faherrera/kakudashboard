@@ -7,22 +7,19 @@ import {
   getProductsActionSuccess
 } from './action';
 import ProductService from '../../services/product.services';
-import { getProducts } from './api';
-import axios from 'axios';
 
 //
 function* workerSaga() {
   try {
     const productService = new ProductService();
     const response = yield call(productService.getAll); //Async Call.
-    console.log('This are the response', response.data);
     const products = response.data; //data.
 
     //dispatch a succes action to the store with the products populated.
     yield put(getProductsActionSuccess(products));
 
   } catch (error) {
-    yield put(getProductsActionFail(error));
+    yield put(getProductsActionFail(error.message));
   }
 }
 

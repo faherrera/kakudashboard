@@ -7,7 +7,6 @@ import * as actions from './action';
 class ProductCardList extends Component {
 
   componentDidMount() {
-    console.log('Props recibidas', this.props);
     const {
       getProductsAction
     } = this.props;
@@ -42,6 +41,7 @@ const mapStateToProps = (state) => (
   {
     products: state.productReducer.products,
     loading: state.productReducer.loading,
+    error: state.productReducer.error,
   }
 );
 

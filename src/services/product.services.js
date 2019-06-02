@@ -8,7 +8,6 @@ class ProductService {
   }
 
   getAll() {
-    console.log('LLmando geAll', this.resource);
     return apiInstance.get(this.resource);
   }
 
