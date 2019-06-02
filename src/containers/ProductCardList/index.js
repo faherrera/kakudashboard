@@ -1,37 +1,22 @@
 import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
 import ProductCard from '../../components/ProductCard';
-import FakerData from '../../utils/fakerData';
-import ProductService from '../../services/product.services';
 import SimpleLoader from '../../components/SimpleLoader';
-
+import { connect } from 'react-redux';
+import * as actions from './action';
 class ProductCardList extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      list: FakerData.products,
-      loading: true,
-    };
-
-    this.productService = new ProductService();
-  }
 
   componentDidMount() {
-    this.productService.getAll()
-      .then(
-        res => {
-          this.setState({
-            list: res.data,
-            loading: false
-          });
-        }
-      )
+    console.log('Props recibidas', this.props);
+    const {
+      getProductsAction
+    } = this.props;
+
+    getProductsAction();
   }
 
   render() {
-    const { list, loading } = this.state;
-
+    const { products, loading } = this.props;
     if (loading) {
       return <SimpleLoader />
     }
@@ -39,7 +24,7 @@ class ProductCardList extends Component {
       <Grid columns={3} doubling>
         <Grid.Row>
           {
-            list.length > 0 && list.map((item, i) => {
+            products.length > 0 && products.map((item, i) => {
               return (
                 <Grid.Column key={i}>
                   <ProductCard id={item.id} {...item} />
@@ -53,4 +38,11 @@ class ProductCardList extends Component {
   }
 }
 
-export default ProductCardList;
+const mapStateToProps = (state) => (
+  {
+    products: state.productReducer.products,
+    loading: state.productReducer.loading,
+  }
+);
+
+export default connect(mapStateToProps, actions)(ProductCardList);
