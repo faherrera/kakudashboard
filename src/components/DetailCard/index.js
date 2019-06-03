@@ -3,31 +3,31 @@ import { Card, Image } from 'semantic-ui-react';
 import './styles.scss';
 import ButtonExampleAnimated from '../AnimatedButton';
 
-const DetailCard = ({ id, imageUrl, name, price, text }) => (
+const DetailCard = ({ product, addToCart }) => (
   <Card
     centered
     fluid
     raised
-    id={id}
+    id={product.id}
     className="DetailCard"
   >
-    <Image src={imageUrl} wrapped ui={false} />
+    <Image src={product.imageUrl} wrapped ui={false} />
     <Card.Content>
-      <Card.Header>{name}</Card.Header>
+      <Card.Header>{product.name || "Name"}</Card.Header>
       <Card.Meta>
         <span className='date'>Whakanda Foreva</span>
       </Card.Meta>
       <Card.Description>
-        {text}
+        {product.text}
       </Card.Description>
     </Card.Content>
     <Card.Content extra className='detail-card__extra'>
       <ButtonExampleAnimated
         secondText={`+1 al carrito`}
-        firstText={`$${price || 25.55}`}
+        firstText={`$${product.price}`}
         firstIcon='heart'
         color='instagram'
-        onClick={() => console.log('Fazendo click')}
+        onClick={() => addToCart(product)}
         size='small'
       />
     </Card.Content>

@@ -3,32 +3,44 @@ import { Feed } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import './styles.scss';
 
-const FeedCart = ({ isTotal, image, name, quantity, price }) => (
+const FeedCart = (props) => (
   <Feed className='feed-cart'>
-    <Feed.Event>
-      {
-        !isTotal && <Feed.Label image={image} />
-      }
-      <Feed.Content>
-        {
-          !isTotal && <Feed.Date content={`Cantidades: ${quantity}`} />
-        }
-        {
-          !isTotal ? (
-            <Feed.Summary>
-              {name} - ${price}
-            </Feed.Summary>
-          )
-            : (
-              <Feed.Summary className="center">
-                $ 500.2
-              </Feed.Summary>
-            )
-        }
-      </Feed.Content>
-    </Feed.Event>
+    {
+      props.isTotal ? <FeedTotal {...props} />
+        : <FeedProductCart {...props} />
+    }
   </Feed>
 );
+
+const FeedProductCart = ({ imageUrl, name, quantity, price }) => (
+  <Feed.Event>
+    <Feed.Label image={imageUrl} />
+    <Feed.Content>
+      <Feed.Date content={`Cantidades: ${quantity}`} />
+      <Feed.Summary>
+        {name} / ${price}
+      </Feed.Summary>
+    </Feed.Content>
+  </Feed.Event>
+);
+
+const FeedTotal = ({ cart }) => (
+  <Feed.Event>
+    <Feed.Content>
+      <Feed.Summary className="feed-total">
+        {
+          cart.length > 0
+            ?
+            <strong>
+              ${cart.reduce((sum, product) => sum + (product.price * product.quantity), 0)}
+            </strong>
+            : <strong> ¡Aún no tienes elementos en el carrito! </strong>
+        }
+
+      </Feed.Summary>
+    </Feed.Content>
+  </Feed.Event>
+)
 
 FeedCart.defaultProps = {
   isTotal: false,

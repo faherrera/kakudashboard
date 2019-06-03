@@ -1,27 +1,32 @@
 import React, { Component } from 'react';
 import TopCartComponent from '../../components/TopCart';
-
+import { connect } from 'react-redux';
+import {
+  toggleTopCartAction
+} from './actionCreators'
 class TopCart extends Component {
-  constructor(props) {
-    super(props);
-
+  constructor() {
+    super();
     this.handleToggle = this.handleToggle.bind(this);
-
-    this.state = {
-      open: false,
-    }
   }
 
   handleToggle() {
-    this.setState({
-      open: !this.state.open,
-    });
+    const { toggleTopCartAction } = this.props;
+    toggleTopCartAction();
+
   }
 
   render() {
-    const { open } = this.state;
-    return <TopCartComponent open={open} handleToggle={this.handleToggle} />
+    const { open, cart } = this.props;
+    return (
+      <TopCartComponent cart={cart} open={open} handleToggle={this.handleToggle} />
+    )
   }
 }
 
-export default TopCart;
+const mapStateToProps = (state) => ({
+  cart: state.cartReducer.cart,
+  open: state.cartReducer.openMenu,
+
+});
+export default connect(mapStateToProps, { toggleTopCartAction })(TopCart);
