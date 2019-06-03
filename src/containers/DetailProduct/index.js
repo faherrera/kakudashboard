@@ -1,38 +1,19 @@
 import React, { Component } from 'react';
-import { Loader, Container } from 'semantic-ui-react';
+import { Container, Grid } from 'semantic-ui-react';
 import DetailCard from '../../components/DetailCard';
-import FakerData from '../../utils/fakerData';
-import ProductService from '../../services/product.services';
 import SimpleLoader from '../../components/SimpleLoader';
-
+import { connect } from 'react-redux';
+import { getProductById } from './actionCreators'
 class DetailProduct extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      product: {},
-      loading: true,
-    };
-
-    this.productService = new ProductService();
-  }
 
   componentDidMount() {
+    const { getProductById } = this.props;
     const { params } = this.props.match;
-    this.productService.getProductById(params.id)
-      .then(
-        res => {
-          this.setState({
-            product: res.data,
-            loading: false,
-          });
-        }
-      )
-
+    getProductById(params.id)
   }
 
   render() {
-    const { loading, product } = this.state;
+    const { loading, product } = this.props;
 
     if (loading) {
       return <SimpleLoader />
@@ -40,12 +21,22 @@ class DetailProduct extends Component {
 
     return (
       <Container>
-        {
-          product != {} && <DetailCard {...product} />
-        }
+        <Grid centered columns={2}>
+          <Grid.Column>
+            {
+              product && <DetailCard {...product} />
+            }
+          </Grid.Column>
+        </Grid>
       </Container>
     );
   }
 }
 
-export default DetailProduct;
+const mapStateToProps = (state) => (
+  {
+    product: state.detailReducer.product,
+    loading: state.detailReducer.loading,
+  }
+)
+export default connect(mapStateToProps, { getProductById })(DetailProduct);
