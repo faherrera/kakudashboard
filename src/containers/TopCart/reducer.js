@@ -16,9 +16,18 @@ function cartReducer(state = initialState, { type, payload }) {
     }
   }
   if (type === ADD_PRODUCT_TO_CART) {
+    const { product } = payload;
+    const findProduct = state.cart.find(productCart => productCart.id === product.id);
+    const newCart = state.cart.filter(productCart => productCart.id !== product.id);
+    if (findProduct) {
+      findProduct.quantity += 1;
+
+    } else {
+      product.quantity = 1;
+    }
     return {
       ...state,
-      cart: [...state.cart, payload.product]
+      cart: [...newCart, product],
     }
   }
   return state;

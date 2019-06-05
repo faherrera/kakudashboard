@@ -3,7 +3,7 @@ import { Card, Feed, Icon } from 'semantic-ui-react';
 import './styles.scss';
 import FeedCart from '../FeedCart';
 
-const TopCart = ({ cart, open, shooped, handleToggle }) => (
+const TopCart = ({ cart, open, handleToggle }) => (
   <Card className="top-cart" >
     <Card.Content>
       <Card.Header className="top-cart__header" onClick={handleToggle}>

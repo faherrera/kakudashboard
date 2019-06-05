@@ -24,23 +24,27 @@ const FeedProductCart = ({ imageUrl, name, quantity, price }) => (
   </Feed.Event>
 );
 
-const FeedTotal = ({ cart }) => (
-  <Feed.Event>
-    <Feed.Content>
-      <Feed.Summary className="feed-total">
-        {
-          cart.length > 0
-            ?
-            <strong>
-              ${cart.reduce((sum, product) => sum + (product.price * product.quantity), 0)}
-            </strong>
-            : <strong> ¡Aún no tienes elementos en el carrito! </strong>
-        }
+const FeedTotal = ({ cart }) => {
+  const subtotal = cart.reduce((sum, product) => sum + (product.price * product.quantity), 0);
+  // console.log("Este es el cart", cart);
+  return (
+    <Feed.Event>
+      <Feed.Content>
+        <Feed.Summary className="feed-total">
+          {
+            cart.length > 0
+              ?
+              <strong>
+                ${subtotal}
+              </strong>
+              : <strong> ¡Aún no tienes elementos en el carrito! </strong>
+          }
 
-      </Feed.Summary>
-    </Feed.Content>
-  </Feed.Event>
-)
+        </Feed.Summary>
+      </Feed.Content>
+    </Feed.Event>
+  )
+};
 
 FeedCart.defaultProps = {
   isTotal: false,

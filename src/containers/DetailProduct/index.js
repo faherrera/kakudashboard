@@ -15,7 +15,6 @@ class DetailProduct extends Component {
 
   handleAddToCart(product) {
     const { addProductToCart } = this.props;
-    console.log('Enviando!!');
     addProductToCart(product);
   }
   render() {
