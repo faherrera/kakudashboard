@@ -9,7 +9,7 @@ const TopCart = ({ cart, open, handleToggle }) => (
       <Card.Header className="top-cart__header" onClick={handleToggle}>
         <span className="cart-counter">
           <Icon name="shopping cart" circular />
-          {cart.length}
+          {cart.reduce((sum, product) => sum + product.quantity, 0)}
         </span>
       </Card.Header>
     </Card.Content>
@@ -18,7 +18,7 @@ const TopCart = ({ cart, open, handleToggle }) => (
         open && (
           <Card.Content className="top-cart__content">
             {
-              cart.length > 0 && cart.map((product, index) => <FeedCart {...product} />)
+              cart.length > 0 && cart.map((product, index) => <FeedCart key={index} {...product} />)
             }
             <FeedCart isTotal cart={cart} />
           </Card.Content>

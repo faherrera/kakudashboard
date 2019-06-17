@@ -15,7 +15,9 @@ class ProductCardList extends Component {
   }
 
   render() {
-    const { products, loading } = this.props;
+    const { products, loading, searchText } = this.props;
+    const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchText));
+
     if (loading) {
       return <SimpleLoader />
     }
@@ -23,7 +25,7 @@ class ProductCardList extends Component {
       <Grid columns={3} doubling>
         <Grid.Row>
           {
-            products.length > 0 && products.map((item, i) => {
+            filteredProducts.length > 0 && filteredProducts.map((item, i) => {
               return (
                 <Grid.Column key={i}>
                   <ProductCard id={item.id} {...item} />
@@ -42,6 +44,7 @@ const mapStateToProps = (state) => (
     products: state.productReducer.products,
     loading: state.productReducer.loading,
     error: state.productReducer.error,
+    searchText: state.searchBarReducer.searchText,
   }
 );
 

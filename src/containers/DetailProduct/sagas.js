@@ -17,11 +17,9 @@ function* getProductByIdWorker({ payload }) {
     const productService = new ProductService();
     const response = yield call(productService.getProductById, id);
     const product = response.data;
-    console.log("La respuesta", response);
     yield put(getProductByIdSuccess(product));
 
   } catch (error) {
-    console.log("El error", error);
     yield put(getProductByIdFail(error.message));
   }
 }

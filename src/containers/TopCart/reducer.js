@@ -19,16 +19,25 @@ function cartReducer(state = initialState, { type, payload }) {
     const { product } = payload;
     const findProduct = state.cart.find(productCart => productCart.id === product.id);
     const newCart = state.cart.filter(productCart => productCart.id !== product.id);
-    if (findProduct) {
-      findProduct.quantity += 1;
 
-    } else {
-      product.quantity = 1;
+    if (findProduct) {
+      if (findProduct.hasOwnProperty('quantity')) {
+        findProduct.quantity += 1;
+      } else {
+        findProduct.quantity = 1;
+      }
+      return {
+        ...state,
+        cart: [...newCart, findProduct],
+      }
     }
+
+    product.quantity = 1;
     return {
       ...state,
       cart: [...newCart, product],
     }
+
   }
   return state;
 }
