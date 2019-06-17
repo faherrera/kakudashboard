@@ -4,6 +4,9 @@ import ProductCard from '../../components/ProductCard';
 import SimpleLoader from '../../components/SimpleLoader';
 import { connect } from 'react-redux';
 import * as actions from './action';
+import ProductsGrid from '../../components/ProductsGrid';
+
+
 class ProductCardList extends Component {
 
   componentDidMount() {
@@ -22,19 +25,9 @@ class ProductCardList extends Component {
       return <SimpleLoader />
     }
     return (
-      <Grid columns={3} doubling>
-        <Grid.Row>
-          {
-            filteredProducts.length > 0 && filteredProducts.map((item, i) => {
-              return (
-                <Grid.Column key={i}>
-                  <ProductCard id={item.id} {...item} />
-                </Grid.Column>
-              )
-            })
-          }
-        </Grid.Row>
-      </Grid>
+      <ProductsGrid
+        products={filteredProducts}
+      />
     );
   }
 }

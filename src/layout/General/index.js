@@ -2,11 +2,12 @@
 import React from 'react';
 import HeaderNav from '../../components/Header';
 import SearchBar from '../../containers/SearchBar';
+import MenuNavBar from '../../components/MenuNavBar';
 
 const GeneralLayout = ({ children }) => (
   <div className="general-wrapper">
     <HeaderNav />
-    <SearchBar />
+    <MenuNavBar />
     <main>
       {children}
     </main>

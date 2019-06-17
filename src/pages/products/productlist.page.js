@@ -2,13 +2,14 @@ import React from 'react';
 import ProductCardList from '../../containers/ProductCardList';
 import GeneralLayout from '../../layout/General';
 import { Container } from 'semantic-ui-react';
+import TitlePage from '../../components/TitlePage';
 
 const ProductListPage = () => {
   return (
     <GeneralLayout>
       <section className="product-list-page">
         <Container>
-          <h1> Listado de nuestros productos </h1>
+          <TitlePage title="Todos nuestros productos" />
           <ProductCardList />
         </Container>
       </section>

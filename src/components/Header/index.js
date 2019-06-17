@@ -11,21 +11,6 @@ const PrincipalHeader = () => (
         <Link to='/'>
           <h1 className="brand-logo"> Kaku Commerce</h1>
         </Link>
-
-        <ul className="principal-menu">
-          <li>
-            <a href="#!"> Dirección A </a>
-          </li>
-          <li>
-            <a href="#!"> Dirección B </a>
-          </li>
-          <li>
-            <a href="#!"> Dirección C </a>
-          </li>
-          <li>
-            <a href="#!"> Dirección D </a>
-          </li>
-        </ul>
         <TopCart />
       </nav>
 

@@ -5,7 +5,7 @@ import {
 
 const initialState = {
   cart: [],
-  openMenu: true,
+  openMenu: false,
 }
 
 function cartReducer(state = initialState, { type, payload }) {

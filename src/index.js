@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import Routes from './routes';
 import 'semantic-ui-css/semantic.min.css';
-import './assets/master.scss';
 import { Provider } from 'react-redux';
 import configStore from './store/configStore';
 

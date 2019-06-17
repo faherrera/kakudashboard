@@ -1,0 +1,18 @@
+@import './../../assets/scss/utils/global.scss';
+
+.menu-navbar{
+  background: $primary-green;
+  padding: .3rem 0;
+  font-size: 1.1rem;
+}
+
+.menu-navbar-list{
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+
+    a {
+      color: $secondary-color-font;
+    }
+}

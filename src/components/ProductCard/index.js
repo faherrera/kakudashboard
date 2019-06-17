@@ -23,7 +23,6 @@ ProductCard.propTypes = {
   imageUrl: PropTypes.string,
   name: PropTypes.string,
   price: PropTypes.number,
-
 }
 
 export default withRouter(ProductCard);
