@@ -1,17 +1,21 @@
-/* eslint "jsx-quotes": ["error", "prefer-double"] */
-import React from 'react';
+import React, { useState } from 'react';
 import HeaderNav from '../../components/Header';
-import SearchBar from '../../containers/SearchBar';
-import MenuNavBar from '../../components/MenuNavBar';
+import Wrapper from '../../containers/SidebarWrapper';
 
-const GeneralLayout = ({ children }) => (
-  <div className="general-wrapper">
-    <HeaderNav />
-    <MenuNavBar />
-    <main>
-      {children}
-    </main>
-  </div>
-);
+const GeneralLayout = ({ children }) => {
+  const [visible, setVisible] = useState(false);
+  const handleOpenSidebar = () => setVisible(!visible);
+
+  return (
+    <Wrapper visible={visible}>
+      <section className="general-wrapper">
+        <HeaderNav handleOpen={handleOpenSidebar} />
+        <main>
+          {children}
+        </main>
+      </section>
+    </Wrapper>
+  )
+}
 
 export default GeneralLayout;

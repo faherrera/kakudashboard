@@ -1,17 +1,18 @@
 import React from 'react';
 import './style.scss';
-import { Container } from 'semantic-ui-react';
+import { Container, Button, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import TopCart from '../../containers/TopCart';
 
-const PrincipalHeader = () => (
+const PrincipalHeader = ({ handleOpen }) => (
   <header>
     <Container>
       <nav className="principal-header">
+        <Button onClick={handleOpen}>
+          <Icon name='sidebar' />
+        </Button>
         <Link to='/'>
           <h1 className="brand-logo"> Kaku Commerce</h1>
         </Link>
-        <TopCart />
       </nav>
 
     </Container>
